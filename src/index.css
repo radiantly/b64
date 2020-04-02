@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 div {
   word-wrap: break-word;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import InputField from './InputField';
 import CaeserSegment from './CaeserSegment';
 import DividedSegment from './DividedSegment';
+import Credits from './Credits';
 import * as convert from '../util/convert';
 
 const defaultStates = {
@@ -50,13 +51,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui basic segments" style={{ fontFamily: 'Source Code Pro'}}>
+      <div className="ui basic segments" style={{ fontFamily: 'Source Code Pro', minHeight: '100vh' }}>
         <InputField value={this.state.input} onChange={this.handleInput} />
         <DividedSegment left={this.state.base64encoded} right={this.state.base64decoded} divider="Base64" />
         <DividedSegment left={this.state.hexenc} right={this.state.hexdec} divider="Hex" />
         <DividedSegment left={this.state.base32encoded} right={this.state.base32decoded} divider="Base32" />
         <DividedSegment left={this.state.rot13} right={this.state.rot47} divider="Rot" />
         <CaeserSegment value={this.state.caeser} shift={this.state.caeserShift} handleShiftChange={this.handleShiftChange} header="Caeser cipher" />
+        <Credits />
       </div>
     );
   }

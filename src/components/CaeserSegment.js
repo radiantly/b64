@@ -17,7 +17,7 @@ class CaeserSegment extends React.Component {
           max={25}
           onChange={(e, val) => this.props.handleShiftChange(val)}
         />
-        <div id="caesercipher" className="item">{this.props.value}</div>
+        <div id="caesercipher" style={{ marginBottom: '25px' }}>{this.props.value}</div>
       </Segment>
     );
   }

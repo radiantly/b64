@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   handleInput = input => {
-    this.setState({ input: input});
+    this.setState({ input: input });
 
     if(!input)
       return this.setState({ ...defaultStates });
@@ -36,7 +36,7 @@ class App extends React.Component {
       hexenc: convert.HexEncoder(input),
       hexdec: convert.HexDecoder(input),
       base32encoded: convert.Base32Encoder(input),
-      base32decoded: convert.Base64Decoder(input),
+      base32decoded: convert.Base32Decoder(input),
       rot13: convert.Rot13Encode(input),
       rot47: convert.Rot47Encode(input),
       caeser: convert.CaeserCipher(input, this.state.caeserShift)
@@ -46,7 +46,8 @@ class App extends React.Component {
   handleShiftChange = shift => {
     this.setState({ caeserShift: shift });
 
-    this.setState({ caeser: convert.CaeserCipher(this.state.input, shift)});
+    if(this.state.input)
+      this.setState({ caeser: convert.CaeserCipher(this.state.input, shift)});
   }
 
   render() {

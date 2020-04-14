@@ -1,4 +1,7 @@
 # b64
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5769d559-d0ea-4fc8-bea7-5718d26eabec/deploy-status)](https://app.netlify.com/sites/b64decode/deploys)
+
 This is an all-in-one encoder/decoder web app written using ReactJS, and supports the following:
  - Base64
  - Base32

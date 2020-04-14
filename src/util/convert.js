@@ -10,12 +10,13 @@ const safe = (callback, ...args) => {
 
 const atobBestPossible = (value) =>
   value
-    .match(/[A-Za-z0-9+/]+={0,2}/gi)
+    .match(/[A-Za-z0-9+/]{2,}={0,2}/gi)
     .map((elem) => safe(atob, elem))
     .join("");
 
 const atobLineBreaked = (value) =>
   value
+    .replace(/\n{2,}/, "\n")
     .split("\n")
     .map((elem) => safe(atobBestPossible, elem))
     .join("\n");
@@ -42,7 +43,7 @@ function hexToBytes(hex) {
 }
 
 export const HexEncoder = val => safe(bytesToHex, stringToUTF8Bytes(val));
-export const HexDecoder = val => new TextDecoder().decode(hexToBytes(val));
+export const HexDecoder = val => new TextDecoder().decode(hexToBytes(val.replace(/[^A-fa-f0-9]/gi, "")));
 
 const safeNotEmpty = (callback, ...args) => {
   if(!args[0]) return '';

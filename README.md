@@ -1,3 +1,16 @@
+# b64
+This is an all-in-one encoder/decoder web app written using ReactJS, and supports the following:
+ - Base64
+ - Base32
+ - Hex
+ - ROT13
+ - ROT47
+ - Caeser cipher
+
+I made this for use during CTFs, as it is quite common to see data encoded in some sort of format, and honestly, live encoding/decoding is quite a treat.
+
+<details><summary>Running locally</summary>
+<p>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +79,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+</p>
+</details>

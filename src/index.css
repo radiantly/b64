@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
-div {
+div.segments {
   word-wrap: break-word;
+  white-space: pre-line;
 }

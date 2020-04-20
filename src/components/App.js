@@ -1,9 +1,11 @@
 import React from 'react';
 import InputField from './InputField';
+import Labels from './Labels';
 import CaeserSegment from './CaeserSegment';
 import DividedSegment from './DividedSegment';
 import Credits from './Credits';
 import * as convert from '../util/convert';
+import { generateLabels } from '../util/generateLabels';
 
 const defaultStates = {
   base64encoded: 'Encoded',
@@ -15,6 +17,9 @@ const defaultStates = {
   rot13: 'Rot13',
   rot47: 'Rot47',
   caeser: 'Use the slider to set the shift.',
+  labels: [
+    { text: 'No Input', icon: 'info' }
+  ]
 }
 
 class App extends React.Component {
@@ -39,7 +44,8 @@ class App extends React.Component {
       base32decoded: convert.Base32Decoder(input),
       rot13: convert.Rot13Encode(input),
       rot47: convert.Rot47Encode(input),
-      caeser: convert.CaeserCipher(input, this.state.caeserShift)
+      caeser: convert.CaeserCipher(input, this.state.caeserShift),
+      labels: generateLabels(input)
     });
   }
 
@@ -54,6 +60,7 @@ class App extends React.Component {
     return (
       <div className="ui basic segments" style={{ fontFamily: 'Source Code Pro', minHeight: '100vh' }}>
         <InputField value={this.state.input} onChange={this.handleInput} />
+        <Labels labels={this.state.labels} />
         <DividedSegment left={this.state.base64encoded} right={this.state.base64decoded} divider="Base64" />
         <DividedSegment left={this.state.hexenc} right={this.state.hexdec} divider="Hex" />
         <DividedSegment left={this.state.base32encoded} right={this.state.base32decoded} divider="Base32" />
